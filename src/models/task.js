@@ -13,18 +13,18 @@ const taskSchema = new Schema({
         maxLength:500,
         required:true
     },
-   foto: {
+   fotos: {
     type: String,
     required: [true, 'La foto es obligatoria'],
     match: [
       /^https?:\/\/.*\.(?:png|jpg|jpeg|gif|webp|svg)$/i, 
-      'Por favor, ingresa una URL de imagen válida (jpg, jpeg, png, gif, webp o svg)'.test(valor)
-    ]
-  }
-    
+                  'Por favor, ingresa una URL de imagen válida (jpg, jpeg, png, gif, webp o svg)'
+                ]
+              }
+                
 },{
         timestamps:true
     })
 
-     const photo = mongoose.model('taskSchema',taskSchema)
-     export default  photo
+     const photos = mongoose.model('taskSchema',taskSchema)
+     export default  photos                                                         
