@@ -3,6 +3,8 @@ import cors from 'cors';
 import morgan from 'morgan';
 import {dirname} from 'path';
 import { fileURLToPath } from "url";
+import './dbConfig.js';
+
 
 export default class ServerDocker{
     constructor(){
@@ -24,4 +26,5 @@ export default class ServerDocker{
             this.app.listen(this.port,()=>console.info(`El servidor se esta ejecutando desde:http://localhost:`+this.port)) 
         }
     }
+
 
