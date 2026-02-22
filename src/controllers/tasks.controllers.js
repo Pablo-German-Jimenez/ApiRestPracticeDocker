@@ -12,7 +12,7 @@ export const createTask =async(req,res)=>{
        
        const taskCreated = new fotos(req.body)
        await taskCreated.save()
-       res.status(201).json({message:'task cread'})
+       res.status(201).json({message:'task created'})
       
     }catch(error){
         console.error(error)
