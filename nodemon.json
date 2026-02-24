@@ -1,0 +1,9 @@
+{
+    "watch":["src","server.js"],
+    "ext":"js.json",
+    "ignore":["node modules","*.log"],
+    "exec":"node server.js",
+    "legacy-watch":true,
+    "pollling": true,
+    "delay":1000
+}

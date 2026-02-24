@@ -19,3 +19,23 @@ export const createTask =async(req,res)=>{
          res.send(500).json({message:`ocurrio un error al crear la task`})
     }
 }
+
+
+export const eliminarTarea = async (req, res) => {
+    try {
+        // Obtenemos el id desde los parámetros de la URL
+        const { id } = req.params;
+
+        // Buscamos y eliminamos
+        const tareaEliminada = await fotos.findByIdAndDelete(id);
+
+        if (!tareaEliminada) {
+            return res.status(404).json({ message: 'No se encontró la tarea con ese ID' });
+        }
+
+        res.status(200).json({ message: 'Tarea eliminada correctamente', tareaEliminada });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Ocurrió un error al eliminar la tarea' });
+    }
+}
