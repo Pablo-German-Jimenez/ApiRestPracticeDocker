@@ -10,25 +10,25 @@ const userSchema = new mongoose.Schema({
         {
             type:String,
             required:true,
-            unique:true,
-            validate:{
-                validator:(value)=>{
-                    return /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/.test(value);
-            }
-        }
+            unique:true
+                 
        },
        password:{
         type:String,
         required:true,
-        validate:{
-            validator:(value)=>{
-                return /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/.test(value);
-            }
+        minlength:6 ['la clave es demasiada cortita che'],
+        maxlength:10['te copaste escribiendo rey de reyes xD']
         }
-       }
-    },
+
+       },
+    
 {timeStamps:true});
 
+userSchema.methods.toJSON=function(){
+    const userObject = this.toObject();
+    delete userObject.password;
+    return userObject;
+}
 const Usuario = mongoose.model('Usuario',userSchema);
 
 export default Usuario;

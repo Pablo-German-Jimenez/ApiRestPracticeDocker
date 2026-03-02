@@ -8,4 +8,4 @@ const router = Router()
 router.route('/').get(task)
 router.route('/').post(createTask)
 router.delete('/tasks/:id', eliminarTarea);
-d
+export default router;
