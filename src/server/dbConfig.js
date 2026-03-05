@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 try{
-    mongoose.connect(process.env.MONGODB).then(()=>{
+    mongoose.connect(process.env.MONGODB_URI).then(()=>{
         console.info(`Conectado a apiRestDocker`)
     })
 }

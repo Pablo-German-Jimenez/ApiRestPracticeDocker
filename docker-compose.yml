@@ -1,25 +1,25 @@
-version: "3.9"
-
 services:
-api:
-build: .
-container_name:  todo-api
-ports: 
-- "3000:3000"
-env_file:
-- .env
-depends_on:
-- mongo
-volumes:
-- .:/app #Montamos el código local dentro del contenedor (hot reload)
-- /app/node_modules #Evitamos pisar node_modules, así mantiene dependencias del contenedor
-command: npm run dev #Sobreescribimos el CMD del Dockerfile solo para desarrollo
+  api:
+     build: .
+     container_name:  todo-api
+     ports: 
+       - "3000:3000"
+     env_file:
+       - .env
+     depends_on:
+      - mongo
 
-mongo:
-image: mongo:6
-container_name: todo-mongo
-ports:
-- "27017:27017"
-volumes:
-- mongo-data:/data/db
+#volumes:
+#- .:/app #Montamos el código local dentro del contenedor (hot reload)
+#- /app/node_modules #Evitamos pisar node_modules, así mantiene dependencias del contenedor
+#command: npm run dev #Sobreescribimos el CMD del Dockerfile solo para desarrollo
 
+  mongo:
+    image: mongo:6
+    container_name: todo-mongo
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+volumes:
+      mongo-data:

@@ -1,10 +1,19 @@
 import { json } from "express"
-import fotos from "../models/task.js"
+import tasks from "../models/task.js"
 
-export const obtener = (req,res)=>{
+export const obtenerTodasLasTareas = (req,res)=>{
+    try{
+        const task = tasks.find()
+        res.json(task)
+    }catch(error){
+        console.error(error)
+        res.status(500).json({message:'ocurrio un error al obtener las tareas'})
+    }
     console.log('Desde tasks.routes.js!')
     res.send('Desde controlador obtener!')
 }
+
+
 
 export const createTask =async(req,res)=>{
     try{
@@ -39,3 +48,4 @@ export const eliminarTarea = async (req, res) => {
         res.status(500).json({ message: 'Ocurrió un error al eliminar la tarea' });
     }
 }
+

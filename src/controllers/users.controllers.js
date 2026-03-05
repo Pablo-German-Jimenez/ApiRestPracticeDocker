@@ -1,6 +1,7 @@
 import { genSaltSync } from "bcrypt";
 import Users from "../models/user.js";
 import bcrypt from "bcrypt";
+import generarJWT from "../middlewares/generarJWT.js";
 
 export const createUser = async (req, res) => {
   try {
@@ -50,7 +51,10 @@ export const loginUser = async (req, res) => {
 
     const token = generarJWT(usuarioBuscado.name, usuarioBuscado.email);
 
-    res.status(200).json({ message: "Usuario logueado" });
+    res.status(200).json({ message: "Usuario logueado",
+      usuario: usuarioBuscado.name,
+      token
+     });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }

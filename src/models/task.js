@@ -26,5 +26,5 @@ const taskSchema = new Schema({
         timestamps:true
     })
 
-     const photos = mongoose.model('taskSchema',taskSchema)
-     export default  photos                                                                 
+     const tasks = mongoose.model('taskSchema',taskSchema)
+     export default tasks                                                                 
